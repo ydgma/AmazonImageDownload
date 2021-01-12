@@ -19,9 +19,8 @@ public class AmazonHomePage {
     @FindBy(id = "nav-search-submit-text")
     protected WebElement searchButton;
 
-    public AmazonHomePage() {
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver/chromedriver.exe");
-        driver = new ChromeDriver();
+    public AmazonHomePage(WebDriver driver) {
+        this.driver = driver;
         PageFactory.initElements(this.driver, this);
     }
 
