@@ -19,6 +19,9 @@ public class AmazonHomePage {
     @FindBy(id = "nav-search-submit-text")
     protected WebElement searchButton;
 
+    @FindBy(id = "a-autoid-0")
+    protected WebElement acceptCookiesButton;
+
     public AmazonHomePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(this.driver, this);
@@ -31,5 +34,9 @@ public class AmazonHomePage {
     public void searchForProduct(String name) {
         searchBox.sendKeys(name);
         searchButton.click();
+    }
+
+    public void clickAcceptCookiesButton() {
+        acceptCookiesButton.click();
     }
 }

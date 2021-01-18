@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Downloading images from amazon" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-01-12T18:31:22" hostname="YDCOMPUTER" time="6.123">
+<testsuite name="Downloading images from amazon" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-01-18T16:34:45" hostname="YDCOMPUTER" time="8.726">
   <properties/>
-  <testcase name="Check that the user is able to successfully navigate to an amazon product page" classname="Downloading images from amazon" time="6.123"/>
+  <testcase name="Check that images for a searched product are successfully downloaded" classname="Downloading images from amazon" time="8.726"/>
   <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[Starting ChromeDriver 87.0.4280.88 (89e2380a3e36c3464b5dd1302349b1382549290d-refs/branch-heads/4280@{#1761}) on port 7717
+  <system-err><![CDATA[Starting ChromeDriver 87.0.4280.88 (89e2380a3e36c3464b5dd1302349b1382549290d-refs/branch-heads/4280@{#1761}) on port 43737
 Only local connections are allowed.
 Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
 ChromeDriver was started successfully.
-Jan 12, 2021 6:31:25 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+Jan 18, 2021 4:34:49 PM org.openqa.selenium.remote.ProtocolHandshake createSession
 INFO: Detected dialect: W3C
 ]]></system-err>
 </testsuite>
