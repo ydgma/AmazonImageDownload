@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Downloading images from amazon" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-01-18T16:34:45" hostname="YDCOMPUTER" time="8.726">
+<testsuite name="Downloading images from amazon" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-01-20T17:13:13" hostname="YDCOMPUTER" time="9.132">
   <properties/>
-  <testcase name="Check that images for a searched product are successfully downloaded" classname="Downloading images from amazon" time="8.726"/>
+  <testcase name="Check that images for a searched product are successfully downloaded" classname="Downloading images from amazon" time="9.132"/>
   <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[Starting ChromeDriver 87.0.4280.88 (89e2380a3e36c3464b5dd1302349b1382549290d-refs/branch-heads/4280@{#1761}) on port 43737
+  <system-err><![CDATA[Starting ChromeDriver 87.0.4280.88 (89e2380a3e36c3464b5dd1302349b1382549290d-refs/branch-heads/4280@{#1761}) on port 5209
 Only local connections are allowed.
 Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
 ChromeDriver was started successfully.
-Jan 18, 2021 4:34:49 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+Jan 20, 2021 5:13:16 PM org.openqa.selenium.remote.ProtocolHandshake createSession
 INFO: Detected dialect: W3C
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
 ]]></system-err>
 </testsuite>

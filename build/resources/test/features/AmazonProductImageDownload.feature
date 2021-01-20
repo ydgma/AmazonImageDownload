@@ -8,6 +8,6 @@ Feature: Downloading images from amazon
    Scenario: Check that images for a searched product are successfully downloaded 
      When I navigate to amazon home page
      And I search for "headphones"
-     Then items of "headphones" are displayed
-     And images for of the items are successfully downloaded
+     And I click on the item number 2
+     Then all images for are successfully downloaded for item number 2
 

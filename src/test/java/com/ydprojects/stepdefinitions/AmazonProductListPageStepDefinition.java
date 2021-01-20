@@ -23,11 +23,15 @@ public class AmazonProductListPageStepDefinition {
         Assert.assertTrue(amazonProductListPage.areProductsWithNameDisplayed(productName));
     }
 
-    @And("images for of the items are successfully downloaded")
-    public void imagesForOfTheItemsAreSuccessfullyDownloaded() {
+    @And("I click on the item number {int}")
+    public void iClickOnTheItemNumber(int number) {
         amazonProductListPage = new AmazonProductListPage(driver);
+        amazonProductListPage.clickOnItemNumber(number);
+    }
+
+    @Then("all images for are successfully downloaded for item number {int}")
+    public void allImagesForAreSuccessfullyDownloadedForItemNumber(int productListNumber) {
         amazonProductDetailPage = new AmazonProductDetailPage(driver);
-        amazonProductListPage.clickOnItemNumber(8);
-        amazonProductDetailPage.clickOnFirstImage();
+        Assert.assertTrue(amazonProductDetailPage.downloadAllImages(productListNumber));
     }
 }

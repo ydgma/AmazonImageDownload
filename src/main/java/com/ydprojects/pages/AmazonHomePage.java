@@ -2,15 +2,12 @@ package com.ydprojects.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class AmazonHomePage {
 
     private static final String HOME_PAGE_URL = "http://www.amazon.co.uk";
-
     protected WebDriver driver;
 
     @FindBy(id = "twotabsearchtextbox")
