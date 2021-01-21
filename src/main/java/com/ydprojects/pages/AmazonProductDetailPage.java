@@ -7,9 +7,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.lang.reflect.Array;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,25 +20,25 @@ public class AmazonProductDetailPage extends AmazonHomePage {
     protected WebElement listOfImageThumbnails;
 
     @FindBy(xpath = "//*[@id=\"main-image-container\"]/ul")
-    protected WebElement listOfMainImages;
+    protected WebElement imageContainer;
 
     public AmazonProductDetailPage(WebDriver driver) {
         super(driver);
     }
 
     public boolean downloadAllImages(int productListNumber) {
-        boolean downloaded = false;
+        boolean allDownloaded = true;
         populateImageList();
         int counter = 0;
         for(WebElement element : mainImageList){
             String src = RegexUtil.extractSrcFromElement(element.getAttribute("innerHTML"));
-            ImageDownloadUtil.downloadImage(src,String.valueOf(counter),String.valueOf(productListNumber));
-            counter++;
-            if (Files.isDirectory(Paths.get("src/test/resources/images/"+productListNumber+""))) {
-                downloaded = true;
+            boolean imageDownloaded = ImageDownloadUtil.downloadImage(src,String.valueOf(counter),String.valueOf(productListNumber));
+            if(!imageDownloaded) {
+                allDownloaded = false;
             }
+            counter++;
         }
-        return downloaded;
+        return allDownloaded;
     }
 
     public void downloadImage(int imageNumber, int productListNumber) {
@@ -53,7 +50,7 @@ public class AmazonProductDetailPage extends AmazonHomePage {
 
     private void populateImageList() {
         clickOnThumbnails();
-        mainImageList = listOfMainImages.findElements(By.tagName("li"))
+        mainImageList = imageContainer.findElements(By.tagName("li"))
                 .stream()
                 .filter(webElement -> webElement.getAttribute("innerHTML").contains("src"))
                 .collect(Collectors.toList());
