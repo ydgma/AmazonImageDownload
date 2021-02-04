@@ -48,15 +48,19 @@ public class AmazonProductDetailPage extends AmazonHomePage {
         ImageDownloadUtil.downloadImage(src,String.valueOf(imageNumber),String.valueOf(productListNumber));
     }
 
+    /**
+     it is necessary to click on all of the thumbnail for the elements ofr the images to become visible on
+     the HTML dom
+     */
     private void populateImageList() {
-        clickOnThumbnails();
+        clickOnAllImageThumbnails();
         mainImageList = imageContainer.findElements(By.tagName("li"))
                 .stream()
                 .filter(webElement -> webElement.getAttribute("innerHTML").contains("src"))
                 .collect(Collectors.toList());
     }
 
-    private void clickOnThumbnails() {
+    private void clickOnAllImageThumbnails() {
         populateThumbnailList();
         for(WebElement thumbNail : imageThumbnailLinks){
             thumbNail.click();

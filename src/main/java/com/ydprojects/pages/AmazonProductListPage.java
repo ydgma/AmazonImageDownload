@@ -23,26 +23,41 @@ public class AmazonProductListPage extends AmazonHomePage {
         return searchResultInfo.getText().contains(productName);
     }
 
-    //TODO need to improve on this
     public void clickOnItemNumber(int number) {
         clickAcceptCookiesButton();
-        try {
-            clickOnStandardItem(number);
-        } catch (NoSuchElementException e) {
-            LOG.info(e.getMessage());
-            clickOnSponsoredItem(number);
+        clickOnItemWithNumber(number);
+    }
+
+    private void clickOnItemWithNumber(int itemNumber) {
+        checkAndReturnIfVerticalElementIsAvailable(itemNumber).click();
+    }
+
+    private WebElement checkAndReturnIfVerticalElementIsAvailable(int itemNumber){
+
+        String verticalNormal = "//*[@id=\"search\"]/div[1]/div[2]/div/span[3]/div[2]/div["+itemNumber+"]/div/span/div/div/div[2]/div[2]/div/div[1]/div/div/div[1]/h2/a";
+        String verticalSponsored = "//*[@id=\"search\"]/div[1]/div[2]/div/span[3]/div[2]/div["+itemNumber+"]/div/span/div/div/div/div/div[2]/div[2]/div/div[1]/div/div/div/h2/a";
+        String verticalSponsored2 = "//*[@id=\"search\"]/div[1]/div[2]/div/span[3]/div[2]/div["+itemNumber+"]/div/span/div/div/div/div/div[2]/div[2]/div/div[1]/div/div/div[1]/h2/a";
+        String horizontalNormal = "//*[@id=\"search\"]/div[1]/div[2]/div/span[3]/div[2]/div["+itemNumber+"]/div/span/div/div/div/div/div[2]/h2/a";
+
+        if(!driver.findElements(By.xpath(verticalNormal)).isEmpty()){
+
+            return driver.findElement(By.xpath(verticalNormal));
+
+        } else if (!driver.findElements(By.xpath(verticalSponsored)).isEmpty()){
+
+            return driver.findElement(By.xpath(verticalSponsored));
+
+        } else if (!driver.findElements(By.xpath(verticalSponsored2)).isEmpty()) {
+
+            return driver.findElement(By.xpath(verticalSponsored2));
+
+        }else if (!driver.findElements(By.xpath(horizontalNormal)).isEmpty()){
+
+            return driver.findElement(By.xpath(horizontalNormal));
+        } else{
+            throw new NoSuchElementException("The item selector cannot be found");
         }
-    }
 
-    private void clickOnStandardItem(int number) {
-        WebElement item = driver.findElement(By.xpath("//*[@id=\"search\"]/div[1]/div[2]/div/span[3]/div[2]/div["+number+"]/div/span/div/div/div[2]/div[2]/div/div[1]/div/div/div[1]/h2/a"));
-        item.click();
     }
-
-    private void clickOnSponsoredItem(int number) {
-        WebElement item = driver.findElement(By.xpath("//*[@id=\"search\"]/div[1]/div[2]/div/span[3]/div[2]/div["+number+"]/div/span/div/div/div/div/div[2]/div[2]/div/div[1]/div/div/div/h2/a"));
-        item.click();
-    }
-
 
 }
