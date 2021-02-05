@@ -5,12 +5,8 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class AmazonProductListPage extends AmazonHomePage {
-
-    private static final Logger LOG = LoggerFactory.getLogger(AmazonProductListPage.class);
 
     @FindBy(xpath = "//*[@id=\"search\"]/span/div/span/h1/div/div[1]/div/div/span[3]")
     protected WebElement searchResultInfo;

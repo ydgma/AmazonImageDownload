@@ -29,9 +29,9 @@ public class AmazonProductListPageStepDefinition {
         amazonProductListPage.clickOnItemNumber(number);
     }
 
-    @Then("all images for are successfully downloaded for item number {int}")
-    public void allImagesForAreSuccessfullyDownloadedForItemNumber(int productListNumber) {
+    @Then("all images of the item are successfully downloaded")
+    public void allImagesForAreSuccessfullyDownloadedForItemNumber() {
         amazonProductDetailPage = new AmazonProductDetailPage(driver);
-        Assert.assertTrue(amazonProductDetailPage.downloadAllImages(productListNumber));
+        Assert.assertTrue(amazonProductDetailPage.downloadAllImages());
     }
 }

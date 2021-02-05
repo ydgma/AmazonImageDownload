@@ -19,6 +19,9 @@ public class AmazonProductDetailPage extends AmazonHomePage {
     @FindBy(xpath = "//*[@id=\"altImages\"]/ul")
     protected WebElement listOfImageThumbnails;
 
+    @FindBy(id = "productTitle")
+    protected WebElement productName;
+
     @FindBy(xpath = "//*[@id=\"main-image-container\"]/ul")
     protected WebElement imageContainer;
 
@@ -26,13 +29,13 @@ public class AmazonProductDetailPage extends AmazonHomePage {
         super(driver);
     }
 
-    public boolean downloadAllImages(int productListNumber) {
+    public boolean downloadAllImages() {
         boolean allDownloaded = true;
         populateImageList();
         int counter = 0;
         for(WebElement element : mainImageList){
             String src = RegexUtil.extractSrcFromElement(element.getAttribute("innerHTML"));
-            boolean imageDownloaded = ImageDownloadUtil.downloadImage(src,String.valueOf(counter),String.valueOf(productListNumber));
+            boolean imageDownloaded = ImageDownloadUtil.downloadImage(src,String.valueOf(counter),getProductName());
             if(!imageDownloaded) {
                 allDownloaded = false;
             }
@@ -41,11 +44,15 @@ public class AmazonProductDetailPage extends AmazonHomePage {
         return allDownloaded;
     }
 
-    public void downloadImage(int imageNumber, int productListNumber) {
+    public String getProductName(){
+        return productName.getText();
+    }
+
+    public void downloadImage(int imageNumber) {
         populateImageList();
         WebElement image = mainImageList.get(imageNumber);
         String src = RegexUtil.extractSrcFromElement(image.getAttribute("innerHTML"));
-        ImageDownloadUtil.downloadImage(src,String.valueOf(imageNumber),String.valueOf(productListNumber));
+        ImageDownloadUtil.downloadImage(src,String.valueOf(imageNumber),getProductName());
     }
 
     /**
